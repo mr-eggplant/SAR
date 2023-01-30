@@ -63,13 +63,13 @@ python3 main.py --data /path/to/imagenet --data_corruption /path/to/imagenet-c -
 
 '--exp_type' is choosen from:
 
-- 'normal'  means the same test setting to prior mild data stream in Tent and EATA;
+- 'normal' means the same test setting to prior mild data stream in Tent and EATA
 
 - 'bs1' means single sample adaptation, only one sample comes each time-step
 
 - 'mix_shifts' conducts exps over the mixture of 15 corruption types in ImageNet-C
 
-- 'label_shifts' means exps under online imbalanced label distribution shifts. Moreover, imbalance_ratio indicates imbalance extent
+- 'label_shifts' means exps under online imbalanced label distribution shifts. Moreover, imbalance_ratio indicates the imbalance extent
 
 
 **Results**:
