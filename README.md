@@ -55,7 +55,7 @@ outputs = adapt_model(inputs)  # now it infers and adapts!
 
 ## Example: Adapting a pre-trained model on ImageNet-C (Corruption).
 
-**Usage:
+**Usage**:
 
 ```
 python3 main.py --data /path/to/imagenet --data_corruption /path/to/imagenet-c --exp_type [normal/bs1/mix_shifts/label_shifts] --method [no_adapt/tent/eata/sar] --model [resnet50_gn_timm/vitbase_timm] --output /output/dir
@@ -78,13 +78,13 @@ Please see our [PAPER 🔗](https://openreview.net/pdf?id=g2YraF75Tj) for detail
 
 
 
-## Correspondence
+## Correspondence 
 
-📬 Please contact Shuaicheng Niu by niushuaicheng [at] gmail.com.
+Please contact Shuaicheng Niu by niushuaicheng [at] gmail.com. 📬 
 
 
 ## Citation
-If the EATA method or fully test-time adaptation without forgetting are helpful in your research, please consider citing our paper:
+If the SAR method or wild test-time adaptation settings are helpful in your research, please consider citing our paper:
 ```
 @inproceedings{niu2023towards,
   title={Towards Stable Test-Time Adaptation in Dynamic Wild World},
