@@ -1,10 +1,10 @@
-# 📡 Towards Stable Test-Time Adaptation in Dynamic Wild World
+# 🌠 Towards Stable Test-Time Adaptation in Dynamic Wild World
 
 This is the official project repository for [Towards Stable Test-Time Adaptation in Dynamic Wild World 🔗](https://openreview.net/pdf?id=g2YraF75Tj) by
 Shuaicheng Niu, Jiaxiang Wu, Yifan Zhang, Zhiquan Wen, Yaofo Chen, Peilin Zhao and Mingkui Tan **(ICLR 2023 Oral, Notable-Top-5%)**.
 
-📡  SAR conducts model learning at test time to adapt a pre-trained model to test data that has distributional shifts ☀️ 🌧 ❄️, such as corruptions, simulation-to-real discrepancies, and other differences between training and testing data. 
-SAR aims to adapt a model in dymamic wild world, i.e., the test data stream may have mixed domain shifts, small batch size, and online imbalanced label distribution shifts (as shown in the figure below).
+- 1️⃣: SAR conducts model learning at test time to adapt a pre-trained model to test data that has distributional shifts ☀️ 🌧 ❄️, such as corruptions, simulation-to-real discrepancies, and other differences between training and testing data. 
+- 2️⃣: SAR aims to adapt a model in dymamic wild world, i.e., the test data stream may have mixed domain shifts, small batch size, and online imbalanced label distribution shifts (as shown in the figure below).
 
 <p align="center">
 <img src="figures/wild_settings.png" alt="wild_settings" width="100%" align=center />

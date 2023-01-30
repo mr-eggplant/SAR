@@ -98,7 +98,6 @@ class SelectedRotateImageFolder(datasets.ImageFolder):
         self.original_samples = self.samples
 
     def __getitem__(self, index):
-        # path, target = self.imgs[index]
         path, target = self.samples[index]
         img_input = self.loader(path)
 
@@ -157,28 +156,12 @@ def reset_data_sampler(sampler, dset_length, dset):
     sampler.total_size = sampler.num_samples * sampler.num_replicas
 
 
-
-# def prepare_train_dataset(args, aug):
-#     print('Preparing training data (ori imagenet train)...')
-#     # tr_transforms_local = tr_transforms if use_transforms else None
-#     transforms_local = [aug, te_transforms]
-#     traindir = os.path.join(args.data, 'train')
-#     trset = SelectedRotateImageFolder(traindir, transforms_local, original=True, rotation=args.rotation,
-#                                                         rotation_transform=rotation_tr_transforms)
-#     # if args.debug:
-#     #     trset = torch.utils.data.Subset(trset, list(range(512)))
-#     return trset
-
-
 def prepare_train_dataset(args, use_transforms=True):
     print('Preparing training data (ori imagenet train)...')
     tr_transforms_local = tr_transforms if use_transforms else None
-    # transforms_local = [aug, te_transforms]
     traindir = os.path.join(args.data, 'train')
     trset = SelectedRotateImageFolder(traindir, tr_transforms_local, original=True, rotation=args.rotation,
                                                         rotation_transform=rotation_tr_transforms)
-    # if args.debug:
-    #     trset = torch.utils.data.Subset(trset, list(range(512)))
     return trset
 
 
@@ -191,12 +174,11 @@ def prepare_train_dataloader(args, trset=None, sampler=None):
         train_sampler = torch.utils.data.distributed.DistributedSampler(trset)
         trloader = torch.utils.data.DataLoader(
             trset, batch_size=args.batch_size,
-            num_workers=args.workers, pin_memory=True, sampler=train_sampler, drop_last=True) #sampler=None shuffle=True,
+            num_workers=args.workers, pin_memory=True, sampler=train_sampler, drop_last=True)
     return trloader, train_sampler
 
 
-def prepare_test_data(args, use_transforms=True):
-    # te_transforms_local = te_transforms if use_transforms else None	
+def prepare_test_data(args, use_transforms=True):	
     if args.corruption == 'original':
         te_transforms_local = te_transforms if use_transforms else None
     elif args.corruption in common_corruptions:
@@ -218,9 +200,7 @@ def prepare_test_data(args, use_transforms=True):
         
     if not hasattr(args, 'workers'):
         args.workers = 1
-    # if args.debug:
-    # 	teset = torch.utils.data.Subset(teset, list(range(512)))
-    teloader = torch.utils.data.DataLoader(teset, batch_size=args.test_batch_size, shuffle=args.if_shuffle, # original batch_size is 1
+    teloader = torch.utils.data.DataLoader(teset, batch_size=args.test_batch_size, shuffle=args.if_shuffle,
                                                     num_workers=args.workers, pin_memory=True)
     return teset, teloader
 
@@ -237,8 +217,6 @@ def prepare_test_data_for_train(args, use_transforms=True):
         
     if not hasattr(args, 'workers'):
         args.workers = 1
-    # if args.debug:
-    # 	teset = torch.utils.data.Subset(teset, list(range(512)))
-    teloader = torch.utils.data.DataLoader(teset, batch_size=64, shuffle=True, # original batch_size is 256
+    teloader = torch.utils.data.DataLoader(teset, batch_size=64, shuffle=True,
                                                     num_workers=args.workers, pin_memory=True)
     return teset, teloader
