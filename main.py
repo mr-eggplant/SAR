@@ -99,9 +99,9 @@ def get_args():
     parser.add_argument('--d_margin', type=float, default=0.05, help='\epsilon in Eqn. (5) for filtering redundant samples')
 
     # Exp Settings
-    parser.add_argument('--method', default='sar', type=str, help='tent, eata, sar')
+    parser.add_argument('--method', default='sar', type=str, help='no_adapt, tent, eata, sar')
     parser.add_argument('--model', default='vitbase_timm', type=str, help='resnet50_gn_timm or resnet50_bn_torch or vitbase_timm')
-    parser.add_argument('--exp_type', default='normal', type=str, help='norm, mix_shifts, bs1, label_shifts')
+    parser.add_argument('--exp_type', default='label_shifts', type=str, help='normal, mix_shifts, bs1, label_shifts')
 
     # SAR parameters
     parser.add_argument('--sar_margin_e0', default=math.log(1000)*0.40, type=float, help='the threshold for reliable minimization in SAR, Eqn. (2)')
@@ -286,7 +286,7 @@ if __name__ == '__main__':
 
             base_optimizer = torch.optim.SGD
             optimizer = SAM(params, base_optimizer, lr=args.lr, momentum=0.9)
-            adapt_model = sar.SAR(net, optimizer)
+            adapt_model = sar.SAR(net, optimizer, margin_e0=args.sar_margin_e0)
 
             batch_time = AverageMeter('Time', ':6.3f')
             top1 = AverageMeter('Acc@1', ':6.2f')
