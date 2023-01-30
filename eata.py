@@ -1,8 +1,3 @@
-"""
-Copyright to EATA ICML 2022 Authors, 2022.03.20
-Based on Tent ICLR 2021 Spotlight. 
-"""
-
 from argparse import ArgumentDefaultsHelpFormatter
 from copy import deepcopy
 
