@@ -31,7 +31,7 @@ This repository contains code for evaluation on [ImageNet-C 🔗](https://arxiv.
 
 - Step 1: Download [ImageNet-C 🔗](https://github.com/hendrycks/robustness) dataset from [here 🔗](https://zenodo.org/record/2235448#.YpCSLxNBxAc). 
 
-- Step 2: Put IamgeNet-C at "--data_corruption" 
+- Step 2: Put IamgeNet-C at "--data_corruption".
 
 - Step 3 [optional, for EATA]: Put ImageNet **test/val set**  at  "--data".
 
@@ -75,15 +75,38 @@ python3 main.py --data_corruption /path/to/imagenet-c --exp_type [normal/bs1/mix
 
 Note: For EATA method, you need also to set "--data /path/to/imagenet" of clean ImageNet test/validation set to compute the weight importance for regularization.
 
-**Results**:
+**Experimental results**:
 
-Please see our [PAPER 🔗](https://openreview.net/pdf?id=g2YraF75Tj) for detailed results.
+The Table below shows the results **under online imbalanced label distribution shifts**, the reported accuracy is averaged over 15 different corruption types in ImageNet-C (severity level 5).
+| Model+Method   | Avg. Acc. |
+| -------------- | :---------------------------------: |
+|       ResNet-50 (BN) | 18.0                                |
+| &emsp;\+ MEMO        | 24.0                                |
+| &emsp;\+ DDA         | 27.2                                |
+| &emsp;\+ Tent        | 2.1                                 |
+| &emsp;\+ EATA        | 0.9                                 |
+|||
+|       ResNet-50 (GN) | 30.6                                |
+| &emsp;\+ MEMO        | 31.3                                |
+| &emsp;\+ DDA         | 35.1                                |
+| &emsp;\+ Tent        | 22.0                                |
+| &emsp;\+ EATA        | 31.6                                |
+| &emsp;\+ SAR (ours)  | **37.2 $\pm$ 0.6**                  |
+|||
+|       VitBase (LN)   | 29.9                                |
+| &emsp;\+ MEMO        | 39.1                                |
+| &emsp;\+ DDA         | 36.2                                |
+| &emsp;\+ Tent        | 47.3                                |
+| &emsp;\+ EATA        | 49.9                                |
+| &emsp;\+ SAR (ours)  | **58.0 $\pm$ 0.5**                  |
+
+Please see our [PAPER 🔗](https://openreview.net/pdf?id=g2YraF75Tj) for more detailed results.
 
 
 
 ## Correspondence 
 
-Please contact Shuaicheng Niu by niushuaicheng [at] gmail.com. 📬 
+Please contact Shuaicheng Niu by [niushuaicheng at gmail.com] if you have any questions.  📬
 
 
 ## Citation
@@ -98,4 +121,4 @@ If our SAR method or wild test-time adaptation settings are helpful in your rese
 ```
 
 ## Acknowledgment
-The code is greatly inspired by the [Tent 🔗](https://github.com/DequanWang/tent) and [EATA 🔗](https://github.com/mr-eggplant/EATA).
+The code is inspired by the [Tent 🔗](https://github.com/DequanWang/tent) and [EATA 🔗](https://github.com/mr-eggplant/EATA).
