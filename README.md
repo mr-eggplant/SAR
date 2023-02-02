@@ -10,8 +10,8 @@ Shuaicheng Niu, Jiaxiang Wu, Yifan Zhang, Zhiquan Wen, Yaofo Chen, Peilin Zhao a
 <img src="figures/wild_settings.png" alt="wild_settings" width="100%" align=center />
 </p>
 
-Method: Sharpness-aware and reliable entropy minimization (SAR)
-- 1️⃣ SAR conducts selective entropy minimization by excluding partial samples with noisy gradients out of adaptation.
+Method: **S**harpness-**A**ware and **R**eliable Entropy Minimization (SAR)
+- 1️⃣ SAR conducts selective entropy minimization by excluding partial samples with noisy gradients out of online adaptation.
 
 - 2️⃣ SAR optimizes both entropy and the sharpness of entropy surface simutaneously, so that the model update is robust to those remaining samples with noisy gradients.
 
@@ -77,28 +77,15 @@ Note: For EATA method, you need also to set "--data /path/to/imagenet" of clean 
 
 **Experimental results**:
 
-The Table below shows the results **under online imbalanced label distribution shifts**, the reported accuracy is averaged over 15 different corruption types in ImageNet-C (severity level 5).
-| Model+Method   | Avg. Acc. |
-| -------------- | :---------------------------------: |
-|       ResNet-50 (BN) | 18.0                                |
-| &emsp;\+ MEMO        | 24.0                                |
-| &emsp;\+ DDA         | 27.2                                |
-| &emsp;\+ Tent        | 2.1                                 |
-| &emsp;\+ EATA        | 0.9                                 |
-|||
-|       ResNet-50 (GN) | 30.6                                |
-| &emsp;\+ MEMO        | 31.3                                |
-| &emsp;\+ DDA         | 35.1                                |
-| &emsp;\+ Tent        | 22.0                                |
-| &emsp;\+ EATA        | 31.6                                |
-| &emsp;\+ SAR (ours)  | **37.2 $\pm$ 0.6**                  |
-|||
-|       VitBase (LN)   | 29.9                                |
-| &emsp;\+ MEMO        | 39.1                                |
-| &emsp;\+ DDA         | 36.2                                |
-| &emsp;\+ Tent        | 47.3                                |
-| &emsp;\+ EATA        | 49.9                                |
-| &emsp;\+ SAR (ours)  | **58.0 $\pm$ 0.5**                  |
+The Table below shows the results **under online imbalanced label distribution shifts**. The reported **average accuracy** is averaged over 15 different corruption types in ImageNet-C (severity level 5).
+|            | ResNet-50 (BN) | ResNet-50 (GN)          | VitBase (LN)            |
+| :---------- | :--------------: | :-----------------------: | :-----------------------: |
+| No adapt   | 18.0           | 30.6                    | 29.9                    |
+| MEMO       | 24.0           | 31.3                    | 39.1                    |
+| DDA        | 27.2           | 35.1                    | 36.2                    |
+| Tent       | 2.1            | 22.0                    | 47.3                    |
+| EATA       | 0.9            | 31.6                    | 49.9                    |
+| SAR (ours) | --            | **37.2 $\pm$ 0.6** | **58.0 $\pm$ 0.5** |
 
 Please see our [PAPER 🔗](https://openreview.net/pdf?id=g2YraF75Tj) for more detailed results.
 
