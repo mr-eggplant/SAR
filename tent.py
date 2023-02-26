@@ -70,7 +70,7 @@ def collect_params(model):
     params = []
     names = []
     for nm, m in model.named_modules():
-        if isinstance(m, nn.BatchNorm2d):
+        if isinstance(m, (nn.BatchNorm2d, nn.GroupNorm, nn.LayerNorm)):
             for np, p in m.named_parameters():
                 if np in ['weight', 'bias']:  # weight is scale, bias is shift
                     params.append(p)
@@ -105,6 +105,8 @@ def configure_model(model):
             m.track_running_stats = False
             m.running_mean = None
             m.running_var = None
+        if isinstance(m, (nn.GroupNorm, nn.LayerNorm)):
+            m.requires_grad_(True)
     return model
 
 
