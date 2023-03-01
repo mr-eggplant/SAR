@@ -202,6 +202,9 @@ if __name__ == '__main__':
         else:
             assert False, NotImplementedError
 
+        if args.exp_type == 'bs1' and args.method == 'sar':
+            args.lr = 2 * args.lr
+            logger.info("double lr for sar under bs=1")
 
         logger.info(args)
 
