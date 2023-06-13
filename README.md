@@ -22,7 +22,7 @@ EATA depends on
 
 - Python 3
 - [PyTorch](https://pytorch.org/) >= 1.0
-- [timm](https://github.com/rwightman/pytorch-image-models)
+- [timm](https://github.com/rwightman/pytorch-image-models)==0.6.12
 
 
 **Data preparation**:
