@@ -18,10 +18,10 @@ Method: **S**harpness-**A**ware and **R**eliable Entropy Minimization (SAR)
 
 **Installation**:
 
-EATA depends on
+SAR depends on
 
 - Python 3
-- [PyTorch](https://pytorch.org/) >= 1.0
+- [PyTorch](https://pytorch.org/) = 1.9.0
 - [timm](https://github.com/rwightman/pytorch-image-models)==0.6.12
 
 
