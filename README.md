@@ -22,7 +22,7 @@ SAR depends on
 
 - Python 3
 - [PyTorch](https://pytorch.org/) = 1.9.0
-- [timm](https://github.com/rwightman/pytorch-image-models)==0.6.12
+- [timm](https://github.com/rwightman/pytorch-image-models)==0.6.11
 
 
 **Data preparation**:
